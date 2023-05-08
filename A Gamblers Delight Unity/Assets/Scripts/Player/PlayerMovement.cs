@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 smoothedMovementInput;
     private Vector2 movementInputSmoothVelocity;
 
+    // Used to determine which way the player is facing
+    public bool facingRight = true;
+
     // On awake, run this code 
     private void Awake()
     {
@@ -33,6 +36,19 @@ public class PlayerMovement : MonoBehaviour
         smoothedMovementInput = Vector2.SmoothDamp(smoothedMovementInput, movementInput, ref movementInputSmoothVelocity, 0.1f);
         // Set the velocity on the rigid body based on the smoothened input and the given object speed
         physicsBody.velocity = smoothedMovementInput * speed;
+
+        // If the player is moving RIGHT but is facing LEFT
+        if (smoothedMovementInput.x > 0 && !facingRight)
+        {
+            // Flip the sprite
+            Flip();
+        } 
+        // Else, if the player is moving LEFT but is facing RIGHT 
+        else if (smoothedMovementInput.x < 0 && facingRight)
+        {
+            // Flip the player sprite
+            Flip();
+        }
     }
 
     // Every time an input matching the given keybinds in InputManager's Move controls
@@ -40,5 +56,18 @@ public class PlayerMovement : MonoBehaviour
     {
         // Identify what input is being used and apply the appropriate Vector2 to the movement input 
         movementInput = inputValue.Get<Vector2>();
+
+    }
+
+    // Flip the player sprite on the X axis
+    private void Flip()
+    {
+        // Set facingRight to opposite of what it is
+        facingRight = !facingRight;
+
+        // Set a temporary scale and multiply the player by it 
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 }
