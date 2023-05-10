@@ -11,7 +11,7 @@ public class Hazard : MonoBehaviour
     // When this object collides with another object
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision Detected");
+        //Debug.Log("Collision Detected");
 
         // Get health component from the object
         Coins coinsScript = collision.gameObject.GetComponent<Coins>();
@@ -19,7 +19,7 @@ public class Hazard : MonoBehaviour
         // If the object has collided with the player
         if (coinsScript)
         {
-            Debug.Log("Collided with player!");
+            ///Debug.Log("Collided with player!");
             // Deal damage to the player
             coinsScript.ChangeCoins(-HazardDamage());
         }
