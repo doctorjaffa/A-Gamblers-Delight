@@ -60,6 +60,28 @@ public static class Direction2D
         new Vector2Int(-1, 0)  // LEFT
     };
 
+    // List of the four diagonal directions in Vector2Int.
+    public static List<Vector2Int> diagonalDirectionsList = new List<Vector2Int>
+    {
+        new Vector2Int(1, 1),   // UP-RIGHT
+        new Vector2Int(1, -1),  // RIGHT-DOWN
+        new Vector2Int(-1, -1), // DOWN-LEFT
+        new Vector2Int(-1, 1)   // LEFT-UP
+    };
+
+    // List of all eight directions in Vector2Int.
+    public static List<Vector2Int> eightDirectionsList = new List<Vector2Int>
+    {
+        new Vector2Int(0, 1),   // UP
+        new Vector2Int(1, 1),   // UP-RIGHT
+        new Vector2Int(1, 0),   // RIGHT
+        new Vector2Int(1, -1),  // RIGHT-DOWN
+        new Vector2Int(0, -1),  // DOWN
+        new Vector2Int(-1, -1), // DOWN-LEFT
+        new Vector2Int(-1, 0),  // LEFT
+        new Vector2Int(-1, 1)   // LEFT-UP
+    };
+
     // Method used to randomly pick one of the directions within the above list.
     public static Vector2Int GetRandomCardinalDirection()
     {

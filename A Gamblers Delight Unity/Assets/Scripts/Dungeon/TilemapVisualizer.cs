@@ -9,7 +9,7 @@ public class TilemapVisualizer : MonoBehaviour
     [SerializeField]
     private Tilemap floorTilemap, wallTilemap;   // Create a new tilemap variable.
     [SerializeField]
-    private TileBase floorTile, wallTop;     // Create a new tilebase variable - stores the tile texture.
+    private TileBase floorTile, wallTop, wallSideRight, wallSideLeft, wallBottom, wallFull;     // Create a new tilebase variable - stores the tile texture.
 
     // Paint each floor tile in the tilemap. 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
@@ -18,9 +18,39 @@ public class TilemapVisualizer : MonoBehaviour
     }
 
     // Paint a wall tile in the given position.
-    internal void PaintSingleBasicWall(Vector2Int position)
+    internal void PaintSingleBasicWall(Vector2Int position, string binaryType)
     {
-        PaintSingleTile(wallTilemap, wallTop, position);
+        // Convert the string to an integer with two different values.
+        int typeAsInt = Convert.ToInt32(binaryType, 2);
+
+        TileBase tile = null;
+
+        if (WallTypesHelper.wallTop.Contains(typeAsInt))
+        {
+            tile = wallTop;
+        }
+        else if (WallTypesHelper.wallSideRight.Contains(typeAsInt))
+        {
+            tile = wallSideRight;
+        }
+        else if (WallTypesHelper.wallSideLeft.Contains(typeAsInt))
+        {
+            tile = wallSideLeft;
+        }
+        else if (WallTypesHelper.wallBottom.Contains(typeAsInt))
+        {
+            tile = wallBottom;
+        }
+        else if (WallTypesHelper.wallFull.Contains(typeAsInt))
+        {
+            tile = wallFull;
+        }
+
+        if (tile != null)
+        {
+            PaintSingleTile(wallTilemap, tile, position);
+        }
+
     }
 
     // Calls the method to set each individual tile in the tilemap.
@@ -39,6 +69,11 @@ public class TilemapVisualizer : MonoBehaviour
         Vector3Int tilePosition = tilemap.WorldToCell((Vector3Int)position);
         // Sets the tile to the tile texture provided. 
         tilemap.SetTile(tilePosition, tile);
+    }
+
+    internal void PaintSingleCornerWall(Vector2Int position, string neighboursBinaryType)
+    {
+        throw new NotImplementedException();
     }
 
     // Clears all tilemaps.
