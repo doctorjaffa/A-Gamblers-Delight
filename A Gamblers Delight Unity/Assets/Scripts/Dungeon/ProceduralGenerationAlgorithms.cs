@@ -29,6 +29,23 @@ public static class ProceduralGenerationAlgorithms
         // Return the finished path.
         return path;
     }
+
+    // List because this corridor generation will not create duplicates, and the last position is needed to create the next room.
+    public static List<Vector2Int> RandomWalkCorridor(Vector2Int startPosition, int corridorLength)
+    {
+        List<Vector2Int> corridor = new List<Vector2Int>();
+        var direction = Direction2D.GetRandomCardinalDirection();
+        var currentPositon = startPosition;
+        corridor.Add(currentPositon);
+
+        for (int i = 0; i < corridorLength; i++)
+        {
+            currentPositon += direction;
+            corridor.Add(currentPositon);
+        }
+
+        return corridor;
+    }
 }
 
 // Class of cardinal directions.

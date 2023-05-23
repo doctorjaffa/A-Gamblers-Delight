@@ -7,14 +7,20 @@ using UnityEngine.Tilemaps;
 public class TilemapVisualizer : MonoBehaviour
 {
     [SerializeField]
-    private Tilemap floorTilemap;   // Create a new tilemap variable.
+    private Tilemap floorTilemap, wallTilemap;   // Create a new tilemap variable.
     [SerializeField]
-    private TileBase floorTile;     // Create a new tilebase variable - stores the tile texture.
+    private TileBase floorTile, wallTop;     // Create a new tilebase variable - stores the tile texture.
 
-    // Paint each tile in the tilemap. 
+    // Paint each floor tile in the tilemap. 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
     {
         PaintTiles(floorPositions, floorTilemap, floorTile);
+    }
+
+    // Paint a wall tile in the given position.
+    internal void PaintSingleBasicWall(Vector2Int position)
+    {
+        PaintSingleTile(wallTilemap, wallTop, position);
     }
 
     // Calls the method to set each individual tile in the tilemap.
@@ -35,9 +41,10 @@ public class TilemapVisualizer : MonoBehaviour
         tilemap.SetTile(tilePosition, tile);
     }
 
-    // Clears a tilemap.
+    // Clears all tilemaps.
     public void Clear()
     {
         floorTilemap.ClearAllTiles();
+        wallTilemap.ClearAllTiles();
     }
 }
