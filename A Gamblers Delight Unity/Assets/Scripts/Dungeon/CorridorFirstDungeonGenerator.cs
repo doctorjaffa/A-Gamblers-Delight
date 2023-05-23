@@ -113,9 +113,9 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         List<Vector2Int> roomsToCreate = potentialRoomPositions.OrderBy(x => Guid.NewGuid()).Take(roomToCreateCount).ToList();
 
         // Loop through each position and create rooms at those.
-        foreach (var roomPostion in roomsToCreate)
+        foreach (Vector2Int roomPostion in roomsToCreate)
         {
-            var roomFloor = RunRandomWalk(randomWalkParamters, roomPostion);
+            HashSet<Vector2Int> roomFloor = RunRandomWalk(randomWalkParamters, roomPostion);
             roomPositions.UnionWith(roomFloor);
         }
 

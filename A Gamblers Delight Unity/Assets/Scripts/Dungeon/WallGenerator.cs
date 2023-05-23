@@ -17,13 +17,13 @@ public static class WallGenerator
 
     private static void CreateCornerWalls(TilemapVisualizer tilemapVisualizer, HashSet<Vector2Int> cornerWallPositions, HashSet<Vector2Int> floorPositions)
     {
-        foreach (var position in cornerWallPositions)
+        foreach (Vector2Int position in cornerWallPositions)
         {
             string neighboursBinaryType = "";
 
-            foreach (var direction in Direction2D.eightDirectionsList)
+            foreach (Vector2Int direction in Direction2D.eightDirectionsList)
             {
-                var neigbourPosition = position + direction;
+                Vector2Int neigbourPosition = position + direction;
                 if (floorPositions.Contains(neigbourPosition))
                 {
                     neighboursBinaryType += "1";
