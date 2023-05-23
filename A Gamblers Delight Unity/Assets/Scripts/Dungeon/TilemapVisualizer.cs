@@ -9,7 +9,9 @@ public class TilemapVisualizer : MonoBehaviour
     [SerializeField]
     private Tilemap floorTilemap, wallTilemap;   // Create a new tilemap variable.
     [SerializeField]
-    private TileBase floorTile, wallTop, wallSideRight, wallSideLeft, wallBottom, wallFull;     // Create a new tilebase variable - stores the tile texture.
+    private TileBase floorTile, wallTop, wallSideRight, wallSideLeft, wallBottom, wallFull,
+        wallInnerCornerDownLeft, wallInnerCornerDownRight, 
+        wallDiagonalCornerDownRight, wallDiagonalCornerDownLeft, wallDiagonalCornerUpRight, wallDiagonalCornerUpLeft; // Create a new tilebase variable - stores the tile texture.
 
     // Paint each floor tile in the tilemap. 
     public void PaintFloorTiles(IEnumerable<Vector2Int> floorPositions)
@@ -25,6 +27,8 @@ public class TilemapVisualizer : MonoBehaviour
 
         TileBase tile = null;
 
+        // --------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+        // This section is a block of if statements to determine which binary number in the WallTypesHelper script matches the binaryType passed into this method. 
         if (WallTypesHelper.wallTop.Contains(typeAsInt))
         {
             tile = wallTop;
@@ -46,11 +50,14 @@ public class TilemapVisualizer : MonoBehaviour
             tile = wallFull;
         }
 
+        // If the tile has been filled, paint the tile using the given result in the position.
+
         if (tile != null)
         {
             PaintSingleTile(wallTilemap, tile, position);
         }
 
+        // --------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
     }
 
     // Calls the method to set each individual tile in the tilemap.
@@ -71,9 +78,56 @@ public class TilemapVisualizer : MonoBehaviour
         tilemap.SetTile(tilePosition, tile);
     }
 
-    internal void PaintSingleCornerWall(Vector2Int position, string neighboursBinaryType)
+    internal void PaintSingleCornerWall(Vector2Int position, string binaryType)
     {
-        throw new NotImplementedException();
+        int typeAsInt = Convert.ToInt32(binaryType, 2);
+
+        TileBase tile = null;
+
+        // --------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
+        // This section is a block of if statements to determine which binary number in the WallTypesHelper script matches the binaryType passed into this method. 
+
+        if (WallTypesHelper.wallInnerCornerDownLeft.Contains(typeAsInt))
+        {
+            tile = wallInnerCornerDownLeft;
+        }
+        else if (WallTypesHelper.wallInnerCornerDownRight.Contains(typeAsInt))
+        {
+            tile = wallInnerCornerDownRight;
+        }
+        else if (WallTypesHelper.wallDiagonalCornerDownLeft.Contains(typeAsInt))
+        {
+            tile = wallDiagonalCornerDownLeft;
+        }
+        else if (WallTypesHelper.wallDiagonalCornerDownRight.Contains(typeAsInt))
+        {
+            tile = wallDiagonalCornerDownRight;
+        }
+        else if (WallTypesHelper.wallDiagonalCornerUpRight.Contains(typeAsInt))
+        {
+            tile = wallDiagonalCornerUpRight;
+        }
+        else if (WallTypesHelper.wallDiagonalCornerUpLeft.Contains(typeAsInt))
+        {
+            tile = wallDiagonalCornerUpLeft;
+        }
+        else if (WallTypesHelper.wallFullEightDirections.Contains(typeAsInt))
+        {
+            tile = wallFull;
+        }
+        else if (WallTypesHelper.wallBottmEightDirections.Contains(typeAsInt))
+        {
+            tile = wallBottom;
+        }
+
+        // If the tile has been filled, paint the tile using the given result in the position.
+
+        if (tile != null)
+        {
+            PaintSingleTile(wallTilemap, tile, position);
+        }
+
+        // --------------------------------------------------------------------------------------------------------------------------------------------------------------------- //
     }
 
     // Clears all tilemaps.
