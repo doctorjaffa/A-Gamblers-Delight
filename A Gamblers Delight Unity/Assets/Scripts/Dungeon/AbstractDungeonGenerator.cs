@@ -12,6 +12,8 @@ public abstract class AbstractDungeonGenerator : MonoBehaviour
     protected TilemapVisualizer tilemapVisualizer = null;   // Reference to the TilemapVisualizer script.
     [SerializeField]
     protected Vector2Int startPosition = Vector2Int.zero;   // Start position.
+    [SerializeField]
+    protected GameObject player = null;     // Player object.
 
     // Calls the method to clear the tilemap, then calls the method to generate a new dungeon layout.
     public void GenerateDungeon()

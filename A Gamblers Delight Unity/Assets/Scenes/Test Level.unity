@@ -8185,6 +8185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 515564073}
   - component: {fileID: 515564072}
+  - component: {fileID: 515564074}
   m_Layer: 0
   m_Name: CorridorFirstDungeonGenerator
   m_TagString: Untagged
@@ -8206,6 +8207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemapVisualizer: {fileID: 1864128111}
   startPosition: {x: 0, y: 0}
+  player: {fileID: 1014366352745117027, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
   randomWalkParamters: {fileID: 11400000, guid: 8edc47ecf8446ae4c8d98554cf127cd9, type: 2}
   corridorLength: 20
   corridorCount: 10
@@ -8225,6 +8227,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1839735485 &515564074
+Tilemap:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515564071}
+  m_Enabled: 1
+  m_Tiles: {}
+  m_AnimatedTiles: {}
+  m_TileAssetArray: []
+  m_TileSpriteArray: []
+  m_TileMatrixArray: []
+  m_TileColorArray: []
+  m_TileObjectToInstantiateArray: []
+  m_AnimationFrameRate: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Origin: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0, y: 0, z: 1}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
+  m_TileOrientation: 0
+  m_TileOrientationMatrix:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
 --- !u!1 &633116069
 GameObject:
   m_ObjectHideFlags: 0
@@ -18610,6 +18650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilemapVisualizer: {fileID: 1864128111}
   startPosition: {x: 0, y: 0}
+  player: {fileID: 0}
   randomWalkParamters: {fileID: 11400000, guid: 3f700208a17d8e7409804b4e6f62dee0, type: 2}
 --- !u!4 &1793883743
 Transform:

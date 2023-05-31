@@ -8,16 +8,26 @@ using UnityEngine;
 public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
 {
     [SerializeField]
-    private int corridorLength = 14, corridorCount = 5; // Corridor parameters.
+    private int corridorLength = 20, corridorCount = 10; // Corridor parameters.
     [SerializeField]
     [Range(0.1f, 1)]
-    private float roomPercent = 0.8f;   // How much of the potential room positions should be used to actually create rooms.
+    private float roomPercent = 0.6f;   // How much of the potential room positions should be used to actually create rooms.
+
+    // On scene load, generate a random dungeon from this method.
+    private void Awake()
+    {
+        tilemapVisualizer.Clear();
+        GenerateDungeon();
+    }
 
     // Overrides the base class method.
     protected override void RunProceduralGeneration()
     {
         // Call the CorridorFirstGeneration method.
         CorridorFirstGeneration();
+
+        Instantiate(player);
+        player.transform.position.Set(startPosition.x, startPosition.y, 0);
     }
 
     // Generate a corridor.
