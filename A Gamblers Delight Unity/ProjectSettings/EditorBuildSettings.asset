@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Title Screen.unity
+    guid: 4ca858b7fe8bf714b9673b38a1353761
+  - enabled: 1
+    path: Assets/Scenes/Small Dungeon Level.unity
+    guid: 250b8b228be9e164a942d9a7227485a7
+  - enabled: 1
+    path: Assets/Scenes/Boss Room Level.unity
+    guid: f52186fffc4e15e4eb27c4322546bae3
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

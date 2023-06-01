@@ -14,6 +14,8 @@ public abstract class AbstractDungeonGenerator : MonoBehaviour
     protected Vector2Int startPosition = Vector2Int.zero;   // Start position.
     [SerializeField]
     protected GameObject player = null;     // Player object.
+    [SerializeField]
+    protected GameObject ladder = null;     // Ladder object.
 
     // Calls the method to clear the tilemap, then calls the method to generate a new dungeon layout.
     public void GenerateDungeon()

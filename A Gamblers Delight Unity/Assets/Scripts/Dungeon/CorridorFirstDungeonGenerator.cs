@@ -26,8 +26,7 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         // Call the CorridorFirstGeneration method.
         CorridorFirstGeneration();
 
-        Instantiate(player);
-        player.transform.position.Set(startPosition.x, startPosition.y, 0);
+        GeneratePrefabs();
     }
 
     // Generate a corridor.
@@ -55,6 +54,17 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         //Paint the tiles accordingly.
         tilemapVisualizer.PaintFloorTiles(floorPositions);
         WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
+    }
+
+    // Load prefabs into the scene.
+    private void GeneratePrefabs()
+    {
+        // Create a new player and set its position to zero. 
+        Instantiate(player);
+        player.transform.position.Set(startPosition.x, startPosition.y, 0);
+
+        Instantiate(ladder);
+        ladder.transform.position.Set(0.5f, 0.5f, 0);
     }
 
     // Create rooms at the dead ends, even if they have gone over the room percent.
