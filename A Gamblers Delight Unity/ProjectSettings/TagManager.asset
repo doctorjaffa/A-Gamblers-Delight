@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Particles
+    uniqueID: 571122333
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 2995309943
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 4218545869
+    locked: 0
