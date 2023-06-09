@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 // Base class is SimpleRandomWalkDungeonGenerator to use the RunRandomWalk method.
 public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
@@ -25,8 +26,6 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
     {
         // Call the CorridorFirstGeneration method.
         CorridorFirstGeneration();
-
-        GeneratePrefabs();
     }
 
     // Generate a corridor.
@@ -36,6 +35,8 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         HashSet<Vector2Int> floorPositions = new HashSet<Vector2Int>();
         // Create a new HashSet for potential room postions.
         HashSet<Vector2Int> potentialRoomPositions = new HashSet<Vector2Int>();
+        // Create a new hash set to store enemy spawn positions.
+        HashSet<Vector2Int> enemySpawnPositions = new HashSet<Vector2Int>();
 
         // Call CreateCorridors, passing in the floor positions.
         CreateCorridors(floorPositions, potentialRoomPositions);
@@ -51,14 +52,25 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkDungeonGenerator
         // Create corridors and rooms with no duplicates.
         floorPositions.UnionWith(roomPositions);
 
+        GeneratePrefabs(floorPositions, enemySpawnPositions);
+
         //Paint the tiles accordingly.
         tilemapVisualizer.PaintFloorTiles(floorPositions);
         WallGenerator.CreateWalls(floorPositions, tilemapVisualizer);
     }
 
     // Load prefabs into the scene.
-    private void GeneratePrefabs()
+    private void GeneratePrefabs(HashSet<Vector2Int> floorPositions, HashSet<Vector2Int> enemySpawnPositions)
     {
+        for (int i = 0; i < 5; i++)
+        {
+            // Pick a random floor position and enter it in the enemy spawn positions.
+            Vector2Int randomSpot = floorPositions.ElementAt(Random.Range(0, floorPositions.Count));
+            Instantiate(ladder);
+            
+            enemySpawnPositions.Add(randomSpot);
+        }
+
         // Create a new player and set its position to zero. 
         Instantiate(player);
         player.transform.position.Set(startPosition.x, startPosition.y, 0);
