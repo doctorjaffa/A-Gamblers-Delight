@@ -9,6 +9,6 @@ public class MainMenu : MonoBehaviour
     // If the player presses the play button, load the dungeon level.
     public void PlayGame()
     {
-        SceneManager.LoadScene("Small Dungeon Level");
+        SceneManager.LoadScene("Spawn Level");
     }
 }
