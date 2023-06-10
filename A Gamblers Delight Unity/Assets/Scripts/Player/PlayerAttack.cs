@@ -63,4 +63,9 @@ public class PlayerAttack : MonoBehaviour
             }
         }
     }
+
+    public void SetFiringSpeed(float amount)
+    {
+        fireResetTime -= amount;
+    }
 }

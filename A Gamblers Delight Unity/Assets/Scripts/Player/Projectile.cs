@@ -10,7 +10,7 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rigidBody;
     private Vector3 direction;
     private Vector3 rotation;
-    private float force = 50;
+    private float coinSpeed = 50;
     private float timer;
     private float coinTravelTime = 2;
     private int coinDamage = 13;
@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
         rotation = transform.position - mousePosition;
 
         // Set velocity of projectile in direction of mouse.
-        rigidBody.velocity = new Vector2(direction.x, direction.y).normalized * force;
+        rigidBody.velocity = new Vector2(direction.x, direction.y).normalized * coinSpeed;
 
         float projectileRotation = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, projectileRotation);
@@ -64,5 +64,10 @@ public class Projectile : MonoBehaviour
             // Destroy the coin object.
             Destroy(gameObject);
         }
+    }
+
+    public void SetCoinDamage(int amount)
+    {
+        coinDamage += amount;
     }
 }
