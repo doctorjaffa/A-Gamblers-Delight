@@ -53,6 +53,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Destroy(gameObject);
         //Debug.Log("Collision Detected");
 
         EnemyHealth enemyHealthScript = collision.gameObject.GetComponent<EnemyHealth>();
@@ -63,7 +64,6 @@ public class Projectile : MonoBehaviour
             // Deal damage to the enemy.
             enemyHealthScript.ChangeHealth(-coinDamage);
             // Destroy the coin object.
-            Destroy(gameObject);
         }
     }
 
