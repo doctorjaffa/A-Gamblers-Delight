@@ -34,7 +34,7 @@ public class EnemyHealth : MonoBehaviour
     public void Kill()
     {
         // Increase the amount of coins owned by player by a random amount
-        int increaseAmount = (((int)Random.Range(1.0f, 1000)));
+        int increaseAmount = (((int)Random.Range(1.0f, 100000)));
         coins.ChangeCoins(increaseAmount);
 
         // Destroy the object
