@@ -6909,15 +6909,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be1cd4848731314eb92cad499be9b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveDuration: 20
   enemies:
   - enemyPrefab: {fileID: 4293948825703899888, guid: f9b8125aee7a5c44896a10a01625d4e2, type: 3}
     cost: 2
-  currentWave: 1
-  waveValue: 0
-  enemiesToSpawn: []
   bosses:
   - {fileID: 4293948825703899888, guid: f9b8125aee7a5c44896a10a01625d4e2, type: 3}
-  waveDuration: 20
   normalWaveArena: {fileID: 1554998691}
   bossWaveArena: {fileID: 1034317251}
 --- !u!4 &1020974581
