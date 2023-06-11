@@ -14,14 +14,15 @@ public class Hazard : MonoBehaviour
         //Debug.Log("Collision Detected");
 
         // Get health component from the object
-        Coins coinsScript = collision.gameObject.GetComponent<Coins>();
+        PlayerGamble playerGambleScript = FindObjectOfType<PlayerGamble>();
 
         // If the object has collided with the player
-        if (coinsScript)
+        if (playerGambleScript)
         {
             ///Debug.Log("Collided with player!");
             // Deal damage to the player
-            coinsScript.ChangeCoins(-HazardDamage());
+            playerGambleScript.GambleCoins();
+            
         }
     }
 

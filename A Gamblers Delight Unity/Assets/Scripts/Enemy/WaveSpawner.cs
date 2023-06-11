@@ -20,6 +20,8 @@ public class WaveSpawner : MonoBehaviour
     private Vector3 enemySpawnPoint;
 
     private bool bossWave = false;
+    private bool bossSpawned = false;
+
     public GameObject normalWaveArena;
     public GameObject bossWaveArena;
 
@@ -52,13 +54,18 @@ public class WaveSpawner : MonoBehaviour
                 waveTimer = 0;
             }
         }
+        else if (bossWave)
+        {
+            SpawnBoss();
+            bossSpawned = true;
+        }
         else
         {
             spawnTimer -= Time.fixedDeltaTime;
             waveTimer -= Time.fixedDeltaTime;
         }
 
-        if (waveTimer <= 0)
+        if (waveTimer <= 0 && !bossSpawned)
         {
             currentWave++;
             GenerateWave();
@@ -74,12 +81,7 @@ public class WaveSpawner : MonoBehaviour
 
         if (!bossWave)
         {
-
-            normalWaveArena.SetActive(true);
-            bossWaveArena.SetActive(false);
-
-
-            waveValue = currentWave + 4;
+            waveValue = currentWave * 10;
             GenerateEnemies();
 
             // Gives a fixed time between each enemy.
@@ -87,10 +89,6 @@ public class WaveSpawner : MonoBehaviour
 
             // Store how long the wave has lasted.
             waveTimer = waveDuration;
-        }
-        else
-        {
-            SpawnBoss();
         }
     }
 
@@ -127,13 +125,27 @@ public class WaveSpawner : MonoBehaviour
 
     private void SpawnBoss()
     {
-        bossWaveArena.SetActive(true);
-        normalWaveArena.SetActive(false);
+        bossSpawned = false;
+        SwitchRoom();
 
 
         int randBossID = Random.Range(0, bosses.Count);
 
         Instantiate(bosses[randBossID]);
+    }
+
+    private void SwitchRoom()
+    {
+        if (normalWaveArena.activeInHierarchy)
+        {
+            bossWaveArena.SetActive(true);
+            normalWaveArena.SetActive(false);
+        }
+        else
+        {
+            normalWaveArena.SetActive(true);
+            bossWaveArena.SetActive(false);
+        }
     }
 }
 
