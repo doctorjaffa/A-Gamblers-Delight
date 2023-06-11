@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
     private float coinSpeed = 50;
     private float timer;
     private float coinTravelTime = 2;
+    [SerializeField]
     private int coinDamage = 13;
 
 

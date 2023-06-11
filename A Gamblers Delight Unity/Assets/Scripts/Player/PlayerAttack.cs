@@ -15,6 +15,7 @@ public class PlayerAttack : MonoBehaviour
     private Vector3 mousePosition;
     private Vector3 rotation;
 
+    [SerializeField]
     private float fireResetTime = 1;
     private float rotationZ;
 

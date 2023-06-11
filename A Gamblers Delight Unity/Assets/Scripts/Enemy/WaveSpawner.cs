@@ -10,12 +10,18 @@ public class WaveSpawner : MonoBehaviour
     public int waveValue;
 
     public List<GameObject> enemiesToSpawn = new List<GameObject>();
+    public List<GameObject> bosses = new List<GameObject>();
 
-    public Transform spawnPoint;
+    private Vector3 spawnPoint;
     public int waveDuration;
     private float waveTimer;
     private float spawnInterval;
     private float spawnTimer;
+    private Vector3 enemySpawnPoint;
+
+    private bool bossWave = false;
+    public GameObject normalWaveArena;
+    public GameObject bossWaveArena;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +34,13 @@ public class WaveSpawner : MonoBehaviour
     {
         if (spawnTimer <= 0)
         {
+            SetSpawnPosition();
+
             // Spawn an enemy.
             if (enemiesToSpawn.Count > 0)
             {
                 // Spawn first enemy in the list. 
-                Instantiate(enemiesToSpawn[0], spawnPoint.position, Quaternion.identity);
+                Instantiate(enemiesToSpawn[0], spawnPoint, Quaternion.identity);
                 // Remove the enemy from the list. 
                 enemiesToSpawn.RemoveAt(0);
 
@@ -49,18 +57,41 @@ public class WaveSpawner : MonoBehaviour
             spawnTimer -= Time.fixedDeltaTime;
             waveTimer -= Time.fixedDeltaTime;
         }
+
+        if (waveTimer <= 0)
+        {
+            currentWave++;
+            GenerateWave();
+        }
     }
 
     public void GenerateWave()
     {
-        waveValue = currentWave * 10;
-        GenerateEnemies();
+        if (currentWave == 3 || currentWave == 6)
+        {
+            bossWave = true;
+        }
 
-        // Gives a fixed time between each enemy.
-        spawnInterval = waveDuration / enemiesToSpawn.Count;
-        
-        // Store how long the wave has lasted.
-        waveTimer = waveDuration;
+        if (!bossWave)
+        {
+
+            normalWaveArena.SetActive(true);
+            bossWaveArena.SetActive(false);
+
+
+            waveValue = currentWave + 4;
+            GenerateEnemies();
+
+            // Gives a fixed time between each enemy.
+            spawnInterval = waveDuration / enemiesToSpawn.Count;
+
+            // Store how long the wave has lasted.
+            waveTimer = waveDuration;
+        }
+        else
+        {
+            SpawnBoss();
+        }
     }
 
     public void GenerateEnemies()
@@ -88,6 +119,22 @@ public class WaveSpawner : MonoBehaviour
         enemiesToSpawn.Clear();
         enemiesToSpawn = generatedEnemies;
     }
+
+    private void SetSpawnPosition()
+    {
+        spawnPoint.Set(Random.Range(-8.0f, 8.0f), Random.Range(-6.0f, 6.0f), 0);
+    }
+
+    private void SpawnBoss()
+    {
+        bossWaveArena.SetActive(true);
+        normalWaveArena.SetActive(false);
+
+
+        int randBossID = Random.Range(0, bosses.Count);
+
+        Instantiate(bosses[randBossID]);
+    }
 }
 
 [System.Serializable]
@@ -95,4 +142,10 @@ public class Enemy
 {
     public GameObject enemyPrefab;
     public int cost;
+}
+
+[System.Serializable]
+public class Boss
+{
+    public GameObject bossPrefab;
 }

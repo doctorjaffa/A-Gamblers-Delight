@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44faa45081ef01f45a6c450a09ac42a3, type: 3}
   m_Name: RegularDamageBuff
   m_EditorClassIdentifier: 
-  amount: 6
+  amount: 20
