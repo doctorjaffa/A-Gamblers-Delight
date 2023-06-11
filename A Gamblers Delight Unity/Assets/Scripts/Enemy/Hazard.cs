@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Hazard : MonoBehaviour
 {
-    // Amount of damage this hazard deals
-    //[Header("Positive number for damage the hazard should deal")]
-    private int hazardDamage;
 
     // When this object collides with another object
     private void OnCollisionEnter2D(Collision2D collision)
@@ -24,13 +21,6 @@ public class Hazard : MonoBehaviour
             playerGambleScript.GambleCoins();
             
         }
-    }
-
-    private int HazardDamage()
-    {
-        hazardDamage = Random.Range(1, 70);
-
-        return hazardDamage;
     }
 }
 

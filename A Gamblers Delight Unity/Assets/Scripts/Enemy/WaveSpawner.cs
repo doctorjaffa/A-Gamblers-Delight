@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-
-    public List<Enemy> enemies = new List<Enemy>();
-    public int currentWave;
-    public int waveValue;
-
-    public List<GameObject> enemiesToSpawn = new List<GameObject>();
+    [SerializeField]
+    private int waveDuration;
+    [SerializeField]
+    private List<Enemy> enemies = new List<Enemy>();
+    [SerializeField]
     public List<GameObject> bosses = new List<GameObject>();
 
-    private Vector3 spawnPoint;
-    public int waveDuration;
+    private List<GameObject> enemiesToSpawn = new List<GameObject>();
+
+    private int currentWave;
+    private int waveValue;
     private float waveTimer;
+
+    private Vector3 spawnPoint;
     private float spawnInterval;
     private float spawnTimer;
     private Vector3 enemySpawnPoint;
@@ -22,8 +25,10 @@ public class WaveSpawner : MonoBehaviour
     private bool bossWave = false;
     private bool bossSpawned = false;
 
-    public GameObject normalWaveArena;
-    public GameObject bossWaveArena;
+    [SerializeField]
+    private GameObject normalWaveArena;
+    [SerializeField]
+    private GameObject bossWaveArena;
 
     // Start is called before the first frame update
     void Start()
@@ -34,35 +39,32 @@ public class WaveSpawner : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (spawnTimer <= 0)
+        // If this frame isn't a boss wave, run the normal wave code
+        if (!bossWave)
         {
-            SetSpawnPosition();
-
-            // Spawn an enemy.
-            if (enemiesToSpawn.Count > 0)
+            // If the spawn timer is at 0, spawn a new enemy
+            if (spawnTimer <= 0)
             {
-                // Spawn first enemy in the list. 
-                Instantiate(enemiesToSpawn[0], spawnPoint, Quaternion.identity);
-                // Remove the enemy from the list. 
-                enemiesToSpawn.RemoveAt(0);
+                SetSpawnPosition();
 
-                // Reset the spawn timer. 
-                spawnTimer = spawnInterval;
+                // Spawn an enemy
+                if (enemiesToSpawn.Count > 0)
+                {
+                    // Spawn first enemy in the list
+                    Instantiate(enemiesToSpawn[0], spawnPoint, Quaternion.identity);
+                    // Remove the enemy from the list
+                    enemiesToSpawn.RemoveAt(0);
+
+                    // Reset the spawn timer
+                    spawnTimer = spawnInterval;
+                }
             }
             else
             {
-                waveTimer = 0;
+                // Decrease the spawn and waver timers
+                spawnTimer -= Time.fixedDeltaTime;
+                waveTimer -= Time.fixedDeltaTime;
             }
-        }
-        else if (bossWave)
-        {
-            SpawnBoss();
-            bossSpawned = true;
-        }
-        else
-        {
-            spawnTimer -= Time.fixedDeltaTime;
-            waveTimer -= Time.fixedDeltaTime;
         }
 
         if (waveTimer <= 0 && !bossSpawned)
@@ -74,58 +76,66 @@ public class WaveSpawner : MonoBehaviour
 
     public void GenerateWave()
     {
+        // If a wave is a boss wave, set the boolean to true
         if (currentWave == 3 || currentWave == 6)
         {
             bossWave = true;
         }
 
+        // If it is not a boss wave, set up and create a new normal wave
         if (!bossWave)
         {
+            // Create a wave value - the maximum cost for this wave to be able to "buy" enemies
             waveValue = currentWave * 10;
-            GenerateEnemies();
+            // Generate a new list of enemies 
+            GenerateEnemies(waveValue);
 
-            // Gives a fixed time between each enemy.
+            // Gives a fixed time between each enemy
             spawnInterval = waveDuration / enemiesToSpawn.Count;
 
-            // Store how long the wave has lasted.
+            // Store how long the wave has lasted
             waveTimer = waveDuration;
         }
     }
 
-    public void GenerateEnemies()
+    public void GenerateEnemies(int waveValue)
     {
-        // Create a list of enemies to generate.
+        // Create a list of enemies to generate
         List<GameObject> generatedEnemies = new List<GameObject>();
 
-        // Grab a random enemy and check if it can be afforded.
+        // Grab a random enemy and check if it can be afforded
         while (waveValue > 0)
         {
             int randEnemyID = Random.Range(0, enemies.Count);
             int randEnemyCost = enemies[randEnemyID].cost;
 
+            // If it can be afforded, add the enemy to the list
             if (waveValue-randEnemyCost >= 0)
             {
                 generatedEnemies.Add(enemies[randEnemyID].enemyPrefab);
                 waveValue -= randEnemyCost;
             } 
+            // If the waveValue has been spent, break the loop
             else if (waveValue <= 0)
             {
                 break;
             }
         }
 
+        // Clear the enemiesToSpawn list and populate it with the new generated enemies
         enemiesToSpawn.Clear();
         enemiesToSpawn = generatedEnemies;
     }
 
     private void SetSpawnPosition()
     {
+        // Set the spawn position to be a random location within the arena 
         spawnPoint.Set(Random.Range(-8.0f, 8.0f), Random.Range(-6.0f, 6.0f), 0);
     }
 
     private void SpawnBoss()
     {
-        bossSpawned = false;
+        bossSpawned = true;
         SwitchRoom();
 
 
@@ -149,6 +159,7 @@ public class WaveSpawner : MonoBehaviour
     }
 }
 
+// Enemy prefabs class for this script to access
 [System.Serializable]
 public class Enemy
 {
@@ -156,6 +167,7 @@ public class Enemy
     public int cost;
 }
 
+// Boss prefabs class for this script to access
 [System.Serializable]
 public class Boss
 {

@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class Coins : MonoBehaviour
 {
     // Project prefab
-    public GameObject Projectile;
+    [SerializeField]
+    private GameObject Projectile;
 
     // Private variables
     // Starting and current value of coins

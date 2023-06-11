@@ -4,25 +4,27 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    // Public variables
-    public GameObject Projectile;
-    public bool canFire;
-    public float timer;
+    // Serialized variables
+    [SerializeField]
+    private GameObject Projectile;
+    [SerializeField]
+    private float fireResetTime = 1;
 
     // Private variables
     private Camera mainCamera;
     private PlayerMovement playerMove;
+    private Coins coins;
+
     private Vector3 mousePosition;
     private Vector3 rotation;
-
-    [SerializeField]
-    private float fireResetTime = 1;
     private float rotationZ;
 
-    private Coins coins;
+    private bool canFire;
+    private float timer;
 
     private void Start()
     {
+        // Find the game objects/components within the scene
         playerMove = GetComponentInParent<PlayerMovement>();
         coins = GetComponentInParent<Coins>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();

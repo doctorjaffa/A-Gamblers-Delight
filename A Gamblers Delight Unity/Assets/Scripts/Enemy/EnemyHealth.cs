@@ -6,10 +6,11 @@ public class EnemyHealth : MonoBehaviour
 {
     // Public variables
     // Health the player spawns in with
-    public int startingHealth;
+    [SerializeField]
+    private int startingHealth;
 
     // Current health of the player
-    public int currentHealth;
+    private int currentHealth;
 
     // Invincibility frames time
     public float hitInvincibilityMaxTime = 0.4f;

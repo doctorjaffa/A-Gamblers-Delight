@@ -108,38 +108,27 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    // ------------------------------------------------
-    // Public variables, visible in Unity Inspector
-    // Use these for settings for your script
-    // that can be changed easily
-    // ------------------------------------------------
-    public float forceStrength;     // How fast we move
-    public GameObject target;        // The thing you want to chase
 
+    // Serialized variables
+    [SerializeField]
+    private float forceStrength;     // How fast we move
+    [SerializeField]
+    private GameObject target;        // The thing you want to chase
 
-    // ------------------------------------------------
     // Private variables, NOT visible in the Inspector
-    // Use these for tracking data while the game
-    // is running
-    // ------------------------------------------------
     private Rigidbody2D ourRigidbody;   // The rigidbody attached to this object
 
-
-    // ------------------------------------------------
     // Awake is called when the script is loaded
-    // ------------------------------------------------
     void Awake()
     {
         // Get the rigidbody that we'll be using for movement
         ourRigidbody = GetComponent<Rigidbody2D>();
 
+        // Find the player object in the scene
         target = GameObject.FindGameObjectWithTag("Player");
     }
 
-
-    // ------------------------------------------------
     // Update is called once per frame
-    // ------------------------------------------------
     void Update()
     {
         // Move in the direction of our target
