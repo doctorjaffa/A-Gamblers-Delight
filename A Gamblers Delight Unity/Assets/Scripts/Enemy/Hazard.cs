@@ -5,6 +5,9 @@ using UnityEngine;
 public class Hazard : MonoBehaviour
 {
 
+    [SerializeField]
+    private float animationDuration;
+
     // When this object collides with another object
     private void OnCollisionEnter2D(Collision2D collision)
     {

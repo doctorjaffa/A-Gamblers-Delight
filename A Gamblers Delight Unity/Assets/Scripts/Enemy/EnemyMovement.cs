@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     // How fast the enemy moves
     private float forceStrength;
+
     // The thing the enemy should chase after
     [SerializeField]
     private GameObject target;
@@ -19,6 +20,10 @@ public class EnemyMovement : MonoBehaviour
     // Private variables
     // The rigidbody attached to this object
     private Rigidbody2D ourRigidbody;
+
+    // Enemy animator
+    [SerializeField]
+    private Animator animator;
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
     // ---------------------------------------------------------------------------------------------------  FUNCTIONS --------------------------------------------------------------------------------------------------- //
@@ -38,6 +43,8 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         // Move in the direction of our target
+
+        animator.SetBool("isRunning", true);
 
         // Get the direction
         // Subtract the current position from the target position to get a distance vector
