@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTravelTime: 1
-  objectSpeed: 1
+  objectSpeed: 10
   coinDamage: 13
 --- !u!50 &5919902462448012990
 Rigidbody2D:

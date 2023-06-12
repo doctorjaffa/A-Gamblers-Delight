@@ -28,7 +28,7 @@ public abstract class ObjectMovement : MonoBehaviour
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
 
     // Awake is called when the script is loaded
-    void Awake()
+    void Start()
     {
         // Get the rigidbody that we'll be using for movement
         thisRigidyBody = GetComponent<Rigidbody2D>();

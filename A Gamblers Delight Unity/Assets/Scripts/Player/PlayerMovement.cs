@@ -9,56 +9,51 @@ public class PlayerMovement : ObjectMovement
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
     // -------------------------------------------------------------------------------------------- VARIABLES INITIALISATION -------------------------------------------------------------------------------------------- //
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
-
-    // Private variables
-
-    // Object movement inputs and the smoothed velocity
-    private Vector2 movementInput;
-    private Vector2 smoothedMovementInput;
-    private Vector2 movementInputSmoothVelocity;
+    
+    //Private Variables
+    // The movement direction
+    private Vector2 movementDirection;
+    // The float value of the horizontal movement (On the X-axis)
+    private float horizontalMove;
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
     // ---------------------------------------------------------------------------------------------------  FUNCTIONS --------------------------------------------------------------------------------------------------- //
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
 
-    // Per physics update tick
+    private void Update()
+    {
+        // Get the input movement on the X axis
+        horizontalMove = Input.GetAxis("Horizontal");
+        // Create a new direction based on input
+        movementDirection = new Vector2(horizontalMove, Input.GetAxis("Vertical"));
+
+        // If the player is moving LEFT but is facing RIGHT
+        if (horizontalMove < 0 && facingRight)
+        {
+            Flip();
+        }
+        // If the player is moving RIGHT but is facing LEFT
+        else if (horizontalMove > 0 && !facingRight)
+        {
+            Flip();
+        }
+    }
+
     private void FixedUpdate()
     {
-        // Use the SmoothDamp function to smoothen object movement, based on user input and done over the course of 0.1s
-        smoothedMovementInput = Vector2.SmoothDamp(smoothedMovementInput, movementInput, ref movementInputSmoothVelocity, 0.1f);
-        // Set the velocity on the rigid body based on the smoothened input and the given object speed
-        thisRigidyBody.velocity = smoothedMovementInput * forceStrength;
+        // Update the velocity 
+        thisRigidyBody.velocity = movementDirection * forceStrength;
 
-        // If the player is moving RIGHT but is facing LEFT
-        if (smoothedMovementInput.x > 0 && !facingRight)
-        {
-            // Flip the sprite
-            Flip();
-        } 
-        // Else, if the player is moving LEFT but is facing RIGHT 
-        else if (smoothedMovementInput.x < 0 && facingRight)
-        {
-            // Flip the player sprite
-            Flip();
-        }
-
+        // If there is no movement
         if (thisRigidyBody.velocity == Vector2.zero)
         {
+            // The player is not running
             animator.SetBool("isRunning", false);
         }
+        else
+        {
+            // Else, the player is running
+            animator.SetBool("isRunning", true);
+        }
     }
-
-    // Every time an input matching the given keybinds in InputManager's Move controls
-    private void OnMove(InputValue inputValue)
-    {
-        animator.SetBool("isRunning", true);
-
-        // Identify what input is being used and apply the appropriate Vector2 to the movement input 
-        movementInput = inputValue.Get<Vector2>();
-
-    }
-
-    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
-    // ------------------------------------------------------------------------------------------------ END OF FUNCTIONS ------------------------------------------------------------------------------------------------ //
-    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
 }

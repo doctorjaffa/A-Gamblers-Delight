@@ -12,7 +12,7 @@ public class Coins : MonoBehaviour
     // Serialized variables
     // Projectile prefab
     [SerializeField]
-    private GameObject Projectile;
+    private GameObject Coin;
 
     // Private variables
     // Starting and current value of coins
@@ -50,7 +50,7 @@ public class Coins : MonoBehaviour
     public void ShootCoin()
     {
         // Create a copy of the weapon when it is fired
-        Instantiate(Projectile, transform.position, Quaternion.identity);
+        Instantiate(Coin, transform.position, Quaternion.identity);
 
         // Decrease the amount of coins owned by 1
         --currentAmount;

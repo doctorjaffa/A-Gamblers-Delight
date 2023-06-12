@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53a1c389b53b5b408537bacd9199e04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  forceStrength: 4
   animator: {fileID: 1014366352745117037}
 --- !u!114 &1014366352745117033
 MonoBehaviour:
@@ -171,7 +171,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.021350741, y: -0.0270527}
+  m_Offset: {x: -0.06250024, y: -0.11637555}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -182,7 +182,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8718957, y: 1.742988}
+  m_Size: {x: 0.31769204, y: 0.47413853}
   m_EdgeRadius: 0
 --- !u!95 &1014366352745117037
 Animator:
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da88496e40391ed4a95e6a8ee5ae238a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 3480295422951090910, guid: 96186eaa75aa49e46b05c1f5fa5b1070, type: 3}
+  Coin: {fileID: 8558928918612298998, guid: 103e9e40f3b0689438dfcbe6fa716fe6, type: 3}
 --- !u!114 &870772433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 1014366353072119915}
   - component: {fileID: 1014366353072119916}
   - component: {fileID: 1014366353072119917}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,6 +410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5828487e17eb824c8631308750a0369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 3480295422951090910, guid: 96186eaa75aa49e46b05c1f5fa5b1070, type: 3}
+  Projectile: {fileID: 8558928918612298998, guid: 103e9e40f3b0689438dfcbe6fa716fe6, type: 3}
   fireResetTime: 1
   animator: {fileID: 1014366352745117037}

@@ -16,8 +16,11 @@ public class Hazard : MonoBehaviour
         // Get health component from the object
         PlayerGamble playerGambleScript = FindObjectOfType<PlayerGamble>();
 
+        // Get coin component
+        Coin coinScript = FindObjectOfType<Coin>();
+
         // If the object has collided with the player
-        if (playerGambleScript)
+        if (playerGambleScript && collision.gameObject.layer == 7)
         {
             ///Debug.Log("Collided with player!");
             // Deal damage to the player

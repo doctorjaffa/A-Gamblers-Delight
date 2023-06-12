@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceStrength: 0.5
-  target: {fileID: 0}
   animator: {fileID: 55602386271865629}
+  target: {fileID: 0}
 --- !u!114 &55602386271865627
 MonoBehaviour:
   m_ObjectHideFlags: 0
