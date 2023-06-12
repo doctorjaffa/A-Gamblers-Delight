@@ -80,10 +80,14 @@ public class PlayerAttack : MonoBehaviour
             // Set canFire to false
             canFire = false;
         }
+        else
+        {
+            animator.SetBool("isAttacking", false);
+        }
 
         // Allow player to use weapon again after enough time has passed
         if (!canFire)
-        {
+        { 
             // Start timer
             timer += Time.deltaTime;
 
