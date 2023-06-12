@@ -15,6 +15,7 @@ public class WaveSpawner : MonoBehaviour
 
     private int currentWave = 1;
     private int waveValue;
+    [SerializeField]
     private float waveTimer;
 
     private Vector3 spawnPoint;
@@ -31,6 +32,11 @@ public class WaveSpawner : MonoBehaviour
     private GameObject normalWaveArena;
     [SerializeField]
     private GameObject bossWaveArena;
+
+    private void Awake()
+    {
+        waveTimer = waveDuration;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
