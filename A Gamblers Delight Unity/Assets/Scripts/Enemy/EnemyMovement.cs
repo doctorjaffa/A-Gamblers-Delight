@@ -2,28 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : ObjectMovement
 {
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
     // -------------------------------------------------------------------------------------------- VARIABLES INITIALISATION -------------------------------------------------------------------------------------------- //
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
 
-    // Serialized variables
-    [SerializeField]
-    // How fast the enemy moves
-    private float forceStrength;
-
     // The thing the enemy should chase after
     [SerializeField]
     private GameObject target;
-
-    // Private variables
-    // The rigidbody attached to this object
-    private Rigidbody2D ourRigidbody;
-
-    // Enemy animator
-    [SerializeField]
-    private Animator animator;
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
     // ---------------------------------------------------------------------------------------------------  FUNCTIONS --------------------------------------------------------------------------------------------------- //
@@ -32,9 +19,6 @@ public class EnemyMovement : MonoBehaviour
     // Awake is called when the script is loaded
     void Awake()
     {
-        // Get the rigidbody that we'll be using for movement
-        ourRigidbody = GetComponent<Rigidbody2D>();
-
         // Find the player object in the scene
         target = GameObject.FindGameObjectWithTag("Player");
     }
@@ -52,7 +36,18 @@ public class EnemyMovement : MonoBehaviour
         Vector2 direction = ((Vector2)target.transform.position - (Vector2)transform.position).normalized;
 
         // Move in the correct direction with the set force strength
-        ourRigidbody.AddForce(direction * forceStrength);
+        thisRigidyBody.AddForce(direction * forceStrength);
+
+        // If the player is further left on the screen than this object AND the object is facing right, flip the sprite to face left
+        if (target.transform.position.x < transform.position.x && facingRight)
+        {
+            Flip();
+        }
+        // Else, if the player is further right on the screen than this object AND the object is facing left, flip the sprite to face right
+        else if (target.transform.position.x > transform.position.x && !facingRight)
+        {
+            Flip();
+        }
     }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //

@@ -13,6 +13,6 @@ public class DamageBuff : PowerUpEffect
     public override void Apply(GameObject target)
     {
         // Update coin damage
-        target.GetComponent<Projectile>().SetCoinDamage(amount);
+        target.GetComponent<Coin>().SetCoinDamage(amount);
     }
 }
