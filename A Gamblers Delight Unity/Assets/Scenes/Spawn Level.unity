@@ -6793,9 +6793,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1014366352745117030, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -394669617, guid: da3762585b8e07a4383565ef026d9291, type: 3}
     - target: {fileID: 1014366352745117031, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014366352745117031, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014366352745117031, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1014366352745117031, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6837,6 +6849,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1014366352745117032, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 870772435}
     - target: {fileID: 1014366352939067708, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -6861,6 +6877,34 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -10
       objectReference: {fileID: 0}
+    - target: {fileID: 1014366353072119915, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.047337122
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014366353072119915, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.05148875
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014366353072119915, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.08560058
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014366353072119915, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.425
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014366353072119915, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014366353072119916, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
+      propertyPath: m_Color.a
+      value: 0.15686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014366353072119917, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 870772435}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
 --- !u!1 &870772432 stripped
@@ -6880,6 +6924,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de1ca22cd870e34997d00e5903afbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &870772435 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1014366352745117037, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}
+  m_PrefabInstance: {fileID: 870772431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1020974579
 GameObject:
   m_ObjectHideFlags: 0
@@ -6896,7 +6945,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1020974580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6909,13 +6958,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be1cd4848731314eb92cad499be9b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveDuration: 20
   enemies:
   - enemyPrefab: {fileID: 4293948825703899888, guid: f9b8125aee7a5c44896a10a01625d4e2, type: 3}
     cost: 2
   bosses:
   - {fileID: 4293948825703899888, guid: f9b8125aee7a5c44896a10a01625d4e2, type: 3}
   waveTimer: 0
+  waveDuration: 20
   normalWaveArena: {fileID: 1554998691}
   bossWaveArena: {fileID: 1034317251}
 --- !u!4 &1020974581

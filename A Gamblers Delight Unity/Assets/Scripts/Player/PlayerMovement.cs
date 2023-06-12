@@ -62,11 +62,18 @@ public class PlayerMovement : MonoBehaviour
             // Flip the player sprite
             Flip();
         }
+
+        if (physicsBody.velocity == Vector2.zero)
+        {
+            animator.SetBool("isRunning", false);
+        }
     }
 
     // Every time an input matching the given keybinds in InputManager's Move controls
     private void OnMove(InputValue inputValue)
     {
+        animator.SetBool("isRunning", true);
+
         // Identify what input is being used and apply the appropriate Vector2 to the movement input 
         movementInput = inputValue.Get<Vector2>();
 
