@@ -7,6 +7,10 @@ public class Hazard : MonoBehaviour
 
     [SerializeField]
     private float animationDuration;
+    [SerializeField]
+    private Animator animator;
+
+    private float timer;
 
     // When this object collides with another object
     private void OnCollisionEnter2D(Collision2D collision)
@@ -22,10 +26,24 @@ public class Hazard : MonoBehaviour
         // If the object has collided with the player
         if (playerGambleScript && collision.gameObject.layer == 7)
         {
+            animator.SetBool("isAttacking", true);
             ///Debug.Log("Collided with player!");
             // Deal damage to the player
             playerGambleScript.GambleCoins();
             
+        }
+    }
+
+    private void Update()
+    {
+        if (timer <= animationDuration)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            animator.SetBool("isAttacking", false);
+            timer = 0;
         }
     }
 }
