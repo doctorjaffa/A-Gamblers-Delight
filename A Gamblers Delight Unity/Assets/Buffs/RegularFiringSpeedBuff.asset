@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7a7b9b33678a149ae344a373e1f9fe, type: 3}
   m_Name: RegularFiringSpeedBuff
   m_EditorClassIdentifier: 
-  amount: 1
+  target: {fileID: 1014366352745117027, guid: 3a15b17d4836f614cae018df7af826b3, type: 3}

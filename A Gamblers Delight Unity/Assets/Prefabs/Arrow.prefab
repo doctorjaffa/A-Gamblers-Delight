@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1662033344087652952}
   - component: {fileID: 789550360}
   - component: {fileID: 1401394825}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8315193570146750524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.9268663, y: -1.1360884, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectTravelTime: 0.7
-  objectSpeed: 0.4
+  objectSpeed: 8
 --- !u!50 &1401394825
 Rigidbody2D:
   serializedVersion: 4

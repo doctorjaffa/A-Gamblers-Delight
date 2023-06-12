@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 481864852492929271}
   - component: {fileID: 481864852492929268}
   - component: {fileID: 481864852492929269}
-  - component: {fileID: 8675338573217408818}
+  - component: {fileID: 3826943819127740880}
+  - component: {fileID: 748208160}
   m_Layer: 9
   m_Name: Siren
   m_TagString: Untagged
@@ -175,7 +176,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8675338573217408818
+--- !u!114 &3826943819127740880
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,7 +185,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 481864852492929266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 527ef73461c8fa14e859e86b2f7fe8a3, type: 3}
+  m_Script: {fileID: 11500000, guid: ce2b65ab76a2ae8408d4ebcaf663b5fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceForDecision: 4
+  fireResetTime: 1.8
+  target: {fileID: 0}
+  projectile: {fileID: 6254226082638675983, guid: 3c7fda4fe85c2ff47ba7dcd8929728b3, type: 3}
+--- !u!114 &748208160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481864852492929266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 505740fbd1a0180408eb1f77846b6a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animationDuration: 1

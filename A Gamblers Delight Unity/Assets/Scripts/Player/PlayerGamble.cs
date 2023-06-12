@@ -116,8 +116,8 @@ public class PlayerGamble : MonoBehaviour
         {
             // Kill the player 
             Debug.Log("Player will be killed.");
-            Destroy(gameObject);
-            //SceneManager.LoadScene("Title Screen");
+            //Destroy(gameObject);
+            SceneManager.LoadScene("Title Screen");
         }
         // Else If the survive numbers list has the player's gambled number, run this code
         else if (surviveNumbers.Contains(gambleNumber))
