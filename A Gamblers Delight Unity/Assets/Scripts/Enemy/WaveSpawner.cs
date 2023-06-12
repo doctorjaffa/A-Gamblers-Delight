@@ -13,71 +13,77 @@ public class WaveSpawner : MonoBehaviour
 
     private List<GameObject> enemiesToSpawn = new List<GameObject>();
 
-    private int currentWave;
+    private int currentWave = 1;
     private int waveValue;
     private float waveTimer;
 
     private Vector3 spawnPoint;
-    private float spawnInterval;
-    private float spawnTimer;
+    private float spawnInterval = 3;
+    private float spawnTimer = 3;
     private Vector3 enemySpawnPoint;
 
     private bool bossWave = false;
     private bool bossSpawned = false;
+
+    private bool waveInProgress = false;
 
     [SerializeField]
     private GameObject normalWaveArena;
     [SerializeField]
     private GameObject bossWaveArena;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        GenerateWave();
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
-        // If this frame isn't a boss wave, run the normal wave code
-        if (!bossWave)
+        if (!waveInProgress)
         {
-            // If the spawn timer is at 0, spawn a new enemy
-            if (spawnTimer <= 0)
-            {
-                SetSpawnPosition();
+            waveInProgress = true;
 
-                // Spawn an enemy
-                if (enemiesToSpawn.Count > 0)
+            // If this frame isn't a boss wave, run the normal wave code
+            if (!bossWave)
+            {
+                // Run this code until the wave timer runs out
+                do
                 {
-                    // Spawn first enemy in the list
-                    Instantiate(enemiesToSpawn[0], spawnPoint, Quaternion.identity);
-                    // Remove the enemy from the list
-                    enemiesToSpawn.RemoveAt(0);
+                    // If the spawn timer is at 0, spawn a new enemy
+                    if (spawnTimer <= 0)
+                    {
+                        // Find a random spawn position
+                        SetSpawnPosition();
 
-                    // Reset the spawn timer
-                    spawnTimer = spawnInterval;
-                }
+                        // Spawn an enemy
+                        if (enemiesToSpawn.Count > 0)
+                        {
+                            // Spawn first enemy in the list
+                            Instantiate(enemiesToSpawn[0], spawnPoint, Quaternion.identity);
+                            // Remove the enemy from the list
+                            enemiesToSpawn.RemoveAt(0);
+
+                            // Reset the spawn timer
+                            spawnTimer = spawnInterval;
+                        }
+                    }
+                    else
+                    {
+                        // Decrease the spawn and waver timers
+                        spawnTimer -= Time.fixedDeltaTime;
+                        waveTimer -= Time.fixedDeltaTime;
+                    }
+                } while (waveTimer > 0);
             }
-            else
+
+            if (waveTimer <= 0 && !bossSpawned)
             {
-                // Decrease the spawn and waver timers
-                spawnTimer -= Time.fixedDeltaTime;
-                waveTimer -= Time.fixedDeltaTime;
+                currentWave++;
+                GenerateWave();
             }
-        }
-
-        if (waveTimer <= 0 && !bossSpawned)
-        {
-            currentWave++;
-            GenerateWave();
         }
     }
 
     public void GenerateWave()
     {
         // If a wave is a boss wave, set the boolean to true
-        if (currentWave == 3 || currentWave == 6)
+        if (currentWave == 5 || currentWave == 10)
         {
             bossWave = true;
         }
@@ -113,6 +119,7 @@ public class WaveSpawner : MonoBehaviour
             if (waveValue-randEnemyCost >= 0)
             {
                 generatedEnemies.Add(enemies[randEnemyID].enemyPrefab);
+                // Remove the enemy cost from the wave's total value
                 waveValue -= randEnemyCost;
             } 
             // If the waveValue has been spent, break the loop
