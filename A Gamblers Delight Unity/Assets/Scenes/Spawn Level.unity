@@ -6915,6 +6915,7 @@ MonoBehaviour:
     cost: 2
   bosses:
   - {fileID: 4293948825703899888, guid: f9b8125aee7a5c44896a10a01625d4e2, type: 3}
+  waveTimer: 0
   normalWaveArena: {fileID: 1554998691}
   bossWaveArena: {fileID: 1034317251}
 --- !u!4 &1020974581

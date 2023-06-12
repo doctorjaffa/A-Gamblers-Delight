@@ -8,6 +8,8 @@ public class PowerUp : MonoBehaviour
     [SerializeField]
     private PowerUpEffect powerUpEffect;
 
+    private GameObject target;
+
     // When this object comes into contact with another object
     private void OnTriggerEnter2D(Collider2D collision)
     {
