@@ -6884,7 +6884,7 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 481864852492929266, guid: 78f8f03a588220a4d805474f7acc6e3d, type: 3}
     cost: 4
   bosses:
-  - {fileID: 4293948825703899888, guid: f9b8125aee7a5c44896a10a01625d4e2, type: 3}
+  - {fileID: 4064759080716095848, guid: 09e29c171da20c541b021551f7f35e59, type: 3}
   waveTimer: 0
   waveDuration: 20
   normalWaveArena: {fileID: 1554998691}
