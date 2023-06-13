@@ -44,6 +44,9 @@ public class WaveSpawner : MonoBehaviour
     // Boolean to mark if a wave is currently active
     private bool waveInProgress = false;
 
+    // The scene camera
+    private Camera mainCamera;
+
     // The normal and boss wave arenas
     [SerializeField]
     private GameObject normalWaveArena;
@@ -71,6 +74,9 @@ public class WaveSpawner : MonoBehaviour
     // Awake is called on object creation
     void Awake()
     {
+        // Find the camera in the game world
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
         // Set the wave timer to equal the duration of a wave
         waveTimer = waveDuration;
         // Create the first wave - The current wave is already set to 1
@@ -230,11 +236,13 @@ public class WaveSpawner : MonoBehaviour
     {
         if (normalWaveArena.activeInHierarchy)
         {
+            mainCamera.fieldOfView = 10f;
             bossWaveArena.SetActive(true);
             normalWaveArena.SetActive(false);
         }
         else
         {
+            mainCamera.fieldOfView = 3f;
             normalWaveArena.SetActive(true);
             bossWaveArena.SetActive(false);
         }
