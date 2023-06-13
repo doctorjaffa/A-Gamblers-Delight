@@ -97,7 +97,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.007405162}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b53f5ef5007bee49a65febb0fb2fe5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectTravelTime: 0.7
+  objectTravelTime: 1
   objectSpeed: 8
 --- !u!50 &1401394825
 Rigidbody2D:

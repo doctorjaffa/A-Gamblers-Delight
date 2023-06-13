@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0a281103039d71844b4b0dd6433f942c
+guid: 138a0858a5288e4419d8fd5f2619e93f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,118 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walk2_0
+      name: Centipede_attack3_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 3
-        width: 27
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 417f0fc8c5370e444a5f06014c6613d2
-      internalID: -118158360
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk2_1
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 4
-        width: 27
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: abc3759c8c96d654889f7907d9fa728e
-      internalID: 2140984367
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk2_2
-      rect:
-        serializedVersion: 2
-        x: 99
-        y: 4
-        width: 28
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2f004f712d869c7499e5cb9cf211138b
-      internalID: -566672894
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk2_3
-      rect:
-        serializedVersion: 2
-        x: 147
-        y: 3
-        width: 27
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 91407e721b0ec3a4884a6b45e2ef4820
-      internalID: 1428179538
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk2_4
-      rect:
-        serializedVersion: 2
-        x: 198
-        y: 1
-        width: 24
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d438afffb5dac594dbd1c50265944734
-      internalID: 338670365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk2_5
-      rect:
-        serializedVersion: 2
-        x: 247
+        x: 24
         y: 0
-        width: 23
-        height: 43
+        width: 47
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,8 +130,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 747c90c7f260da14ca66f5934be7d9f3
-      internalID: -1495694372
+      spriteID: eef7bc051ab3340449923b022b2c807c
+      internalID: 766733537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Centipede_attack3_1
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 0
+        width: 46
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d353ca427751fbd49913ad251005a0b6
+      internalID: -1804142654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Centipede_attack3_2
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 0
+        width: 45
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5999f2334092414db58e87abbe6461c
+      internalID: 936438683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Centipede_attack3_3
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 0
+        width: 68
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b8cc9b939222d14aad3bae3fb3d0dd1
+      internalID: -1524646379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Centipede_attack3_4
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 0
+        width: 70
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7d4e48c580ce194ba36608a43052aab
+      internalID: 1165787570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Centipede_attack3_5
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 0
+        width: 57
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62960b23772da3c4c8ea5848adcece9b
+      internalID: 1586393967
       vertices: []
       indices: 
       edges: []
@@ -252,12 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Walk2_3: 1428179538
-      Walk2_5: -1495694372
-      Walk2_1: 2140984367
-      Walk2_0: -118158360
-      Walk2_2: -566672894
-      Walk2_4: 338670365
+      Centipede_attack3_3: -1524646379
+      Centipede_attack3_5: 1586393967
+      Centipede_attack3_0: 766733537
+      Centipede_attack3_2: 936438683
+      Centipede_attack3_1: -1804142654
+      Centipede_attack3_4: 1165787570
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

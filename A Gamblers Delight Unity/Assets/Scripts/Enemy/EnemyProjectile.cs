@@ -17,7 +17,7 @@ public class EnemyProjectile : ObjectProjectile
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
-        //Debug.Log("Collision Detected");
+        Debug.Log("Collision Detected");
 
         // Get health component from the object
         PlayerGamble playerGambleScript = FindObjectOfType<PlayerGamble>();

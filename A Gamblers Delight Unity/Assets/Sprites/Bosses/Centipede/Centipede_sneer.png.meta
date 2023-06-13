@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0a281103039d71844b4b0dd6433f942c
+guid: c8211a57f11b7dd428a26f6c942c8245
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walk2_0
+      name: Centipede_sneer_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 3
-        width: 27
-        height: 40
+        x: 24
+        y: 0
+        width: 47
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,40 +130,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 417f0fc8c5370e444a5f06014c6613d2
-      internalID: -118158360
+      spriteID: 4d1af33424d2e71468bf5d48dd5a8bd4
+      internalID: 1756159605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk2_1
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 4
-        width: 27
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: abc3759c8c96d654889f7907d9fa728e
-      internalID: 2140984367
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk2_2
+      name: Centipede_sneer_1
       rect:
         serializedVersion: 2
         x: 99
-        y: 4
-        width: 28
+        y: 0
+        width: 45
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ed401dfa80e082468e93166a76f75b3
+      internalID: -1181125808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Centipede_sneer_2
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 0
+        width: 42
         height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -172,19 +172,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f004f712d869c7499e5cb9cf211138b
-      internalID: -566672894
+      spriteID: 21b9a37e079865147965f5b3c4cc1c64
+      internalID: 780119629
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk2_3
+      name: Centipede_sneer_3
       rect:
         serializedVersion: 2
-        x: 147
-        y: 3
-        width: 27
+        x: 246
+        y: 0
+        width: 42
         height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -193,41 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91407e721b0ec3a4884a6b45e2ef4820
-      internalID: 1428179538
+      spriteID: 1fc60209fbcdd1e41a331ce5dcefd3a3
+      internalID: -825595342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Walk2_4
+      name: Centipede_sneer_4
       rect:
         serializedVersion: 2
-        x: 198
-        y: 1
-        width: 24
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d438afffb5dac594dbd1c50265944734
-      internalID: 338670365
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Walk2_5
-      rect:
-        serializedVersion: 2
-        x: 247
+        x: 318
         y: 0
-        width: 23
-        height: 43
+        width: 42
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,8 +214,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 747c90c7f260da14ca66f5934be7d9f3
-      internalID: -1495694372
+      spriteID: b9d333b646f4ad7429fd3b72d84aac87
+      internalID: -1039333116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Centipede_sneer_5
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 0
+        width: 45
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 590cd486240780041ad03774dd4162a5
+      internalID: 1125237955
       vertices: []
       indices: 
       edges: []
@@ -252,12 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Walk2_3: 1428179538
-      Walk2_5: -1495694372
-      Walk2_1: 2140984367
-      Walk2_0: -118158360
-      Walk2_2: -566672894
-      Walk2_4: 338670365
+      Centipede_sneer_2: 780119629
+      Centipede_sneer_4: -1039333116
+      Centipede_sneer_5: 1125237955
+      Centipede_sneer_1: -1181125808
+      Centipede_sneer_3: -825595342
+      Centipede_sneer_0: 1756159605
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
