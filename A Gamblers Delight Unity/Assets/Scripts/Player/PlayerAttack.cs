@@ -14,7 +14,7 @@ public class PlayerAttack : MonoBehaviour
     private GameObject Projectile;
     // How fast a player can shoot
     [SerializeField]
-    private float fireResetTime = 1;
+    private float fireResetTime;
 
     // Player animator
     [SerializeField]
@@ -39,7 +39,7 @@ public class PlayerAttack : MonoBehaviour
     // Serialized Variables
     // Amount of damage the coin does
     [SerializeField]
-    private int coinDamage = 13;
+    private int coinDamage;
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
     // ------------------------------------------------------------------------------------------- GETTER/SETTER FUNCTIONS ---------------------------------------------------------------------------------------------- //
@@ -83,7 +83,7 @@ public class PlayerAttack : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, rotationZ);
 
         // Allow player to use weapon if enough time has passed
-        if (Input.GetMouseButton(0) && canFire)
+        if (Input.GetKey(KeyCode.K) && canFire)
         {
 
             // Set the attacking animation to true

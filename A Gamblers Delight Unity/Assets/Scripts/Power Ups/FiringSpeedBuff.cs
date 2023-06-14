@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PowerUps/FiringSpeedBuff")]
 public class FiringSpeedBuff : PowerUpEffect
 {
-    private float amount;
+    private float amount = 0.4f;
     private GameObject target;
 
     public override void Apply(GameObject target)
