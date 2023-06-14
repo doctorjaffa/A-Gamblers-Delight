@@ -21,7 +21,10 @@ public class WaveSpawner : MonoBehaviour
     private float waveTimer;
     // How long a wave lasts for
     [SerializeField]
-    private int waveDuration = 20;
+    private int waveDuration = 15;
+    // Increment of wave duration per wave 
+    [SerializeField]
+    private int waveIncrement = 2;
 
     // Private variables
     // The enemies to spawn in a current wave
@@ -37,12 +40,12 @@ public class WaveSpawner : MonoBehaviour
     private float spawnTimer = 3;
     private Vector3 enemySpawnPoint;
 
-    // Booleans to mark if it is a boss wave, and if a boss has already spawned
+    // Booleans to mark if it is a boss wave
     private bool bossWave = false;
-    private bool bossSpawned = false;
 
     // Boolean to mark if a wave is currently active
     private bool waveInProgress = false;
+    private bool bossSpawned = false;
 
     // The scene camera
     private Camera mainCamera;
@@ -56,16 +59,6 @@ public class WaveSpawner : MonoBehaviour
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
     // ----------------------------------------------------------------------------------------  END OF VARIABLES INITIALISATION ---------------------------------------------------------------------------------------- //
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
-
-    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
-    // ------------------------------------------------------------------------------------------- GETTER/SETTER FUNCTIONS ---------------------------------------------------------------------------------------------- //
-    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
-
-    // Setter to be called upon a boss dying 
-    public void SetBossSpawnedToFalse()
-    {
-        bossSpawned = false;
-    }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
     // ---------------------------------------------------------------------------------------------------  FUNCTIONS --------------------------------------------------------------------------------------------------- //
@@ -93,6 +86,9 @@ public class WaveSpawner : MonoBehaviour
             GenerateWave();
             // A wave is now in progress
             waveInProgress = true;
+
+            // Reset the wave timer 
+            waveTimer = waveDuration;
         }
 
         // There is a wave in progress, so run the wave code
@@ -102,7 +98,7 @@ public class WaveSpawner : MonoBehaviour
             if (!bossWave)
             {
                 // Run this code until the wave timer runs out
-                do
+                if (waveTimer > 0)
                 {
                     // If the spawn timer is at 0, spawn a new enemy
                     if (spawnTimer <= 0)
@@ -127,24 +123,38 @@ public class WaveSpawner : MonoBehaviour
                     spawnTimer -= Time.fixedDeltaTime;
                     waveTimer -= Time.fixedDeltaTime;
 
-                } while (waveTimer > 0); // Until the wave timer runs out
+                } 
             }
-            // If it is a boss wave, run the boss wave code
-            else if (bossWave)
+            // During the boss wave
+            else
             {
-                // Ensure a new wave does not start until the boss is killed
-                do
+                // Find the boss object in the scene
+                GameObject boss = GameObject.FindGameObjectWithTag("Boss");
+
+                // If there is not one, end the wave
+                if (!boss)
                 {
-                    // Do nothing until the boss dies
-                } while (bossSpawned);
+                    waveTimer = 0;
+                }
             }
         }
 
-        // This happens after we break out of the wave loop - when a wave is over
-        // Set the waveInProgress to false - allowing a new wave to be created in the next frame
-        waveInProgress = false;
-        // Increment the current wave 
-        currentWave++;
+        if (waveTimer <= 0)
+        {
+            // This happens after we break out of the wave loop - when a wave is over
+            // Set the waveInProgress to false - allowing a new wave to be created in the next frame
+            waveInProgress = false;
+
+            // Increment the current wave 
+            currentWave++;
+
+            if (currentWave < 5)
+            {
+                // Increase the wave duration 
+                waveDuration += waveIncrement;
+            }
+
+        }
     }
 
     // Creates a new wave
@@ -199,7 +209,7 @@ public class WaveSpawner : MonoBehaviour
                 waveValue -= randEnemyCost;
             }
             // If the waveValue has been spent, break the loop
-            else if (waveValue <= 0)
+            else if (waveValue <= 1)
             {
                 break;
             }
@@ -220,20 +230,26 @@ public class WaveSpawner : MonoBehaviour
     // Spawns a boss
     private void SpawnBoss()
     {
-        // Set bossSpawned to true
-        bossSpawned = true;
-        // Swap to the boss arena
-        SwitchRoom();
+        // If there is not a boss spawned
+        if (!bossSpawned)
+        {
+            bossSpawned = true;
+
+            // Set bossSpawned to true
+            // Swap to the boss arena
+            SwitchRoom();
 
 
-        int randBossID = Random.Range(0, bosses.Count);
+            int randBossID = Random.Range(0, bosses.Count);
 
-        Instantiate(bosses[randBossID]);
+            Instantiate(bosses[randBossID]);
+        }
     }
 
     // Changes between the normal and boss arenas
     private void SwitchRoom()
     {
+        Debug.Log("SwitchRoom");
         if (normalWaveArena.activeInHierarchy)
         {
             mainCamera.fieldOfView = 10f;

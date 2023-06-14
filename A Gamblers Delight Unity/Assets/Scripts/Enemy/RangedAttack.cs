@@ -51,9 +51,9 @@ public class RangedAttack : MonoBehaviour
 
         if (distance <= distanceForDecision && canFire)
         {
+            Debug.Log("Ranged Attack");
             canFire = false;
             animator.ChangeBool("isAttacking");
-            animator.TriggerAttack();
             FireProjectile();
         }
 
@@ -79,6 +79,7 @@ public class RangedAttack : MonoBehaviour
 
     private void FireProjectile()
     {
+        Debug.Log("Projectile created");
         // Create a copy of the weapon when it is fired
         Instantiate(projectile, transform.position, Quaternion.identity);
     }

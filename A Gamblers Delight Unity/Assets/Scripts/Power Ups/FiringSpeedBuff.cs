@@ -11,7 +11,9 @@ public class FiringSpeedBuff : PowerUpEffect
 
     public override void Apply(GameObject target)
     {
+        // Find the player attack script 
+        PlayerAttack attack = target.GetComponentInChildren<PlayerAttack>();
         // Update the firing speed
-        target.GetComponent<PlayerAttack>().SetFiringSpeed(amount);
+        attack.SetFiringSpeed(amount);
     }
 }

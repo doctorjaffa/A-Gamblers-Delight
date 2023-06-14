@@ -12,7 +12,9 @@ public class DamageBuff : PowerUpEffect
 
     public override void Apply(GameObject target)
     {
-        // Update coin damage
-        target.GetComponent<Coin>().SetCoinDamage(amount);
+        // Find the player attack script 
+        PlayerAttack attack = target.GetComponentInChildren<PlayerAttack>();
+        // Update the coin damage
+        attack.SetCoinDamage(amount);
     }
 }

@@ -20,7 +20,7 @@ public class Coins : MonoBehaviour
     private int currentAmount;
 
     // Invincibility frames time
-    private float hitInvincibilityMaxTime = 1.3f;
+    private float hitInvincibilityMaxTime = 0.7f;
 
     // How long it has been since the player was hit
     private float lastHitTime = 0;

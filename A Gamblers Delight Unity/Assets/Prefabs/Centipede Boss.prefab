@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4064759080716095841}
   m_Layer: 0
   m_Name: Centipede Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f29ec88d430707c4d8a99774a4376392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 1
+  startingHealth: 100
 --- !u!61 &4064759080716095841
 BoxCollider2D:
   m_ObjectHideFlags: 0
