@@ -338,7 +338,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014366353072119914}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.425, y: 0.015, z: 0}
   m_LocalScale: {x: 0.047337122, y: 0.05148875, z: 0.08560058}
   m_ConstrainProportionsScale: 0
@@ -413,3 +413,5 @@ MonoBehaviour:
   Projectile: {fileID: 8558928918612298998, guid: 103e9e40f3b0689438dfcbe6fa716fe6, type: 3}
   fireResetTime: 1
   animator: {fileID: 1014366352745117037}
+  coinDamage: 0
+  firePoint: {fileID: 1014366353072119915}

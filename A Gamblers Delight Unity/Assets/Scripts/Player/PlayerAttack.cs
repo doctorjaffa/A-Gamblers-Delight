@@ -31,6 +31,8 @@ public class PlayerAttack : MonoBehaviour
     private Vector3 rotation;
     private float rotationZ;
 
+    private Vector2 lookDirection;
+
     // Boolean to mark if a player can shoot
     private bool canFire;
     // A timer
@@ -40,6 +42,11 @@ public class PlayerAttack : MonoBehaviour
     // Amount of damage the coin does
     [SerializeField]
     private int coinDamage;
+
+    private Rigidbody2D thisRigidbody;
+
+    [SerializeField]
+    private Transform firePoint;
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
     // ------------------------------------------------------------------------------------------- GETTER/SETTER FUNCTIONS ---------------------------------------------------------------------------------------------- //
@@ -71,26 +78,29 @@ public class PlayerAttack : MonoBehaviour
         playerMove = GetComponentInParent<PlayerMovement>();
         coins = GetComponentInParent<Coins>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        thisRigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
         // Get calculate angle and convert to degrees
         rotationZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rotationZ);
+        
 
         // Allow player to use weapon if enough time has passed
-        if (Input.GetKey(KeyCode.K) && canFire)
+        if (Input.GetKey(KeyCode.Alpha5) && canFire)
         {
 
             // Set the attacking animation to true
             animator.SetBool("isAttacking", true);
 
             // Shoot a coin 
-            coins.ShootCoin();
+            coins.ShootCoin(firePoint);
 
             // Set canFire to false
             canFire = false;

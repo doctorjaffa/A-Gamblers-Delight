@@ -51,7 +51,9 @@ public abstract class ObjectProjectile : MonoBehaviour
         rotation = transform.position - mousePosition;
 
         // Set velocity of projectile
-        rigidBody.velocity = new Vector2(direction.x, direction.y).normalized * objectSpeed;
+        //rigidBody.velocity = new Vector2(direction.x, direction.y).normalized * objectSpeed;
+
+        rigidBody.velocity = transform.position * objectSpeed;
     }
 
     void Update()

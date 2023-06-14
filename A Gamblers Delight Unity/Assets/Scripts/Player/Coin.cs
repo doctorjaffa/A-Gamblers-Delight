@@ -30,11 +30,17 @@ public class Coin : ObjectProjectile
         attack = FindObjectOfType<PlayerAttack>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         // Destroy the coin object
-        Destroy(gameObject);
-        //Debug.Log("Collision Detected");
+        
+        Debug.Log(collision.name);
+
+        if (collision.CompareTag("Enemy") || collision.name == "Walls")
+        {
+            Destroy(gameObject);
+        }
+            
 
         EnemyHealth enemyHealthScript = collision.gameObject.GetComponent<EnemyHealth>();
 

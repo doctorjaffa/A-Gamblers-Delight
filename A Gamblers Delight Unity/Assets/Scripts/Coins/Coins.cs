@@ -47,10 +47,10 @@ public class Coins : MonoBehaviour
     }
 
     // Fires coin from player, then checks how many the player has
-    public void ShootCoin()
+    public void ShootCoin(Transform firePoint)
     {
         // Create a copy of the weapon when it is fired
-        Instantiate(Coin, transform.position, Quaternion.identity);
+        Instantiate(Coin, firePoint.position, firePoint.rotation);
 
         // Decrease the amount of coins owned by 1
         --currentAmount;

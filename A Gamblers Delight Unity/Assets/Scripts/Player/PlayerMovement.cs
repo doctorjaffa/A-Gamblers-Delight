@@ -13,8 +13,15 @@ public class PlayerMovement : ObjectMovement
     //Private Variables
     // The movement direction
     private Vector2 movementDirection;
-    // The float value of the horizontal movement (On the X-axis)
-    private float horizontalMove;
+
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
+    // ------------------------------------------------------------------------------------------- GETTER/SETTER FUNCTIONS ---------------------------------------------------------------------------------------------- //
+    // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
+
+    public Vector2 GetMovementDirection()
+    {
+        return movementDirection;
+    }
 
     // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ //
     // ---------------------------------------------------------------------------------------------------  FUNCTIONS --------------------------------------------------------------------------------------------------- //
@@ -22,18 +29,16 @@ public class PlayerMovement : ObjectMovement
 
     private void Update()
     {
-        // Get the input movement on the X axis
-        horizontalMove = Input.GetAxis("Horizontal");
         // Create a new direction based on input
-        movementDirection = new Vector2(horizontalMove, Input.GetAxis("Vertical"));
+        movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         // If the player is moving LEFT but is facing RIGHT
-        if (horizontalMove < 0 && facingRight)
+        if (movementDirection.x < 0 && facingRight)
         {
             Flip();
         }
         // If the player is moving RIGHT but is facing LEFT
-        else if (horizontalMove > 0 && !facingRight)
+        else if (movementDirection.x > 0 && !facingRight)
         {
             Flip();
         }
