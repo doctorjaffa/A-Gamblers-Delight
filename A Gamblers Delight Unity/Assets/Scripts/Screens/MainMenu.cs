@@ -20,11 +20,11 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha4))
+        if (Input.GetKey(KeyCode.Keypad4))
         {
             PlayGame();
         }
-        else if (Input.GetKey(KeyCode.Alpha7))
+        else if (Input.GetKey(KeyCode.Keypad7))
         {
             QuitGame();
         }
