@@ -93,7 +93,7 @@ public class PlayerAttack : MonoBehaviour
         
 
         // Allow player to use weapon if enough time has passed
-        if (Input.GetKey(KeyCode.Alpha5) && canFire)
+        if (Input.GetKey(KeyCode.Keypad5) && canFire)
         {
 
             // Set the attacking animation to true
