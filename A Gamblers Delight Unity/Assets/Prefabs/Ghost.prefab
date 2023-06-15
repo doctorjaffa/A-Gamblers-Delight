@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf59741c0433c2744a6d31579fd3af5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceStrength: 0.5
+  forceStrength: 0.55
   animator: {fileID: 55602386271865629}
   target: {fileID: 0}
 --- !u!114 &55602386271865627
@@ -167,7 +167,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 2.5
+  m_LinearDrag: 1.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

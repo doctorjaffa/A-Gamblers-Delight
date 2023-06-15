@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedAttack : MonoBehaviour
+public class RangedAttack : ObjectAnimator
 {
     // Serialized variables
     // Distance the enemy should be for it to change behaviour
@@ -23,25 +23,21 @@ public class RangedAttack : MonoBehaviour
 
     // Private variables
     // The rigidbody attached to this object
-    private Rigidbody2D ourRigidbody;
+    private Rigidbody2D thisRigidbody;
 
     // Boolean to mark if an enemy can shoot
     private bool canFire;
     // A timer
     private float timer;
 
-    private ObjectAnimator animator;
-
     // Awake is called when the script is loaded
     void Awake()
     {
         // Get the rigidbody that we'll be using for movement
-        ourRigidbody = GetComponent<Rigidbody2D>();
+        thisRigidbody = GetComponent<Rigidbody2D>();
 
         // Find the player object in the scene
         target = GameObject.FindGameObjectWithTag("Player");
-
-        animator = GetComponent<ObjectAnimator>();
     }
 
     private void Update()
@@ -53,12 +49,12 @@ public class RangedAttack : MonoBehaviour
         {
             Debug.Log("Ranged Attack");
             canFire = false;
-            animator.ChangeBool("isAttacking");
+            animator.GetBool("isAttacking");
             FireProjectile();
         }
 
         // Allow player to use weapon again after enough time has passed
-        if (!canFire)
+        if (!canFire && timer <= animationDuration)
         {
             // Start timer
             timer += Time.deltaTime;
@@ -72,7 +68,7 @@ public class RangedAttack : MonoBehaviour
                 // Reset the timer
                 timer = 0;
 
-                animator.ChangeBool("isAttacking");
+                ChangeBool("isAttacking");
             }
         }
     }

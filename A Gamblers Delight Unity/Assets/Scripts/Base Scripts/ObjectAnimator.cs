@@ -7,9 +7,9 @@ public class ObjectAnimator : MonoBehaviour
     // Serialized variables
     // Animation variables
     [SerializeField]
-    private float animationDuration;
+    protected float animationDuration;
     [SerializeField]
-    private Animator animator;
+    protected Animator animator;
 
     public void ChangeBool(string boolToChange)
     {

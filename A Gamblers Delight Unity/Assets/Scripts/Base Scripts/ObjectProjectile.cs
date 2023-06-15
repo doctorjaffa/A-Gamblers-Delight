@@ -18,15 +18,7 @@ public abstract class ObjectProjectile : MonoBehaviour
 
     //Protected variables
     // Objects in the scene
-    protected Camera mainCamera;
     protected Rigidbody2D rigidBody;
-
-    // Where the mouse is
-    protected Vector3 mousePosition;
-
-    // Direction and rotation of the object
-    protected Vector3 direction;
-    protected Vector3 rotation;
 
     // Timer 
     protected float timer;
@@ -38,22 +30,11 @@ public abstract class ObjectProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Find the camera in the game world
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-
         // Get RigidBody
         rigidBody = GetComponent<Rigidbody2D>();
 
-        // Get mouse position
-        mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-
-        direction = mousePosition - transform.position;
-        rotation = transform.position - mousePosition;
-
         // Set velocity of projectile
-        //rigidBody.velocity = new Vector2(direction.x, direction.y).normalized * objectSpeed;
-
-        rigidBody.velocity = transform.position * objectSpeed;
+        rigidBody.velocity = new Vector2(Input.GetAxis("Horizontal"), (Input.GetAxis("Vertical"))) * objectSpeed;
     }
 
     void Update()
