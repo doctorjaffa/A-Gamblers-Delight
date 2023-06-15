@@ -68,7 +68,7 @@ public class PlayerGamble : MonoBehaviour
             bool surviveDone = false;
 
             // Runs this code first time then continues until a number is added
-            do
+           while (!surviveDone)
             {
                 // Get a random number between 1 - 1000
                 nextNumber = Random.Range(0, 1000);
@@ -81,7 +81,7 @@ public class PlayerGamble : MonoBehaviour
                     // Set the boolean to true to end this iteration
                     surviveDone = true;
                 }
-            } while (!surviveDone);
+            }
         }
 
         // Run this X amount of times (X = amount of unique numbers per list)
@@ -91,7 +91,7 @@ public class PlayerGamble : MonoBehaviour
             bool killDone = false;
 
             // Runs this code first time then continues until a number is added
-            do
+            while (!killDone)
             {
                 // Get a random number between 1 - 1000
                 nextNumber = Random.Range(0, 1000);
@@ -104,7 +104,7 @@ public class PlayerGamble : MonoBehaviour
                     // Set the boolean to true to end this iteration
                     killDone = true;
                 }
-            } while (!killDone);
+            } 
         }
     }
 
