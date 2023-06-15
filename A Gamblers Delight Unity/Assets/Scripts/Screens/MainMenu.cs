@@ -17,4 +17,16 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Alpha4))
+        {
+            PlayGame();
+        }
+        else if (Input.GetKey(KeyCode.Alpha7))
+        {
+            QuitGame();
+        }
+    }
 }

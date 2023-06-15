@@ -33,8 +33,20 @@ public abstract class ObjectProjectile : MonoBehaviour
         // Get RigidBody
         rigidBody = GetComponent<Rigidbody2D>();
 
-        // Set velocity of projectile
-        rigidBody.velocity = new Vector2(Input.GetAxis("Horizontal"), (Input.GetAxis("Vertical"))) * objectSpeed;
+        if (rigidBody.CompareTag("Coin"))
+        {
+            // Set velocity of projectile
+            rigidBody.velocity = new Vector2(Input.GetAxis("Horizontal"), (Input.GetAxis("Vertical"))) * objectSpeed;
+        }
+        else if (rigidBody.CompareTag("EnemyProjectile"))
+        {
+            // Get the direction this projectile should travel in
+            Vector2 direction = FindTargetDirection();
+
+
+            // Set velocity of projectile in direction of target
+            rigidBody.velocity = new Vector2(direction.x, direction.y).normalized * objectSpeed;
+        }
     }
 
     void Update()
@@ -47,5 +59,14 @@ public abstract class ObjectProjectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private Vector2 FindTargetDirection()
+    {
+        GameObject target = GameObject.FindGameObjectWithTag("Player");
+
+        Vector2 direction = target.transform.position - transform.position;
+
+        return direction;
     }
 }

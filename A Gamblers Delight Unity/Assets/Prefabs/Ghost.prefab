@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf59741c0433c2744a6d31579fd3af5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceStrength: 0.55
+  forceStrength: 0.4
   animator: {fileID: 55602386271865629}
   target: {fileID: 0}
 --- !u!114 &55602386271865627
